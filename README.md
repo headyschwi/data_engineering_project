@@ -5,7 +5,7 @@ This project demonstrates an end-to-end data engineering pipeline, starting from
 ## Project Overview
 
 ### Architecture
-![image](https://github.com/user-attachments/assets/b4f93f3c-bd6e-48f2-8fef-594c25038c2e)
+![image](https://github.com/user-attachments/assets/7a8f2559-2914-42ac-9425-da69e89e18ba)
 
 The pipeline consists of the following steps:
 
@@ -31,6 +31,10 @@ The pipeline consists of the following steps:
 - **Databricks:** Data transformation and loading into the Azure Data Lake.
 - **Data Lake (Azure):** Storage for the raw, cleaned, and processed data.
 - **Power BI:** Visualization and reporting.
+
+## Data Pipeline
+![image](https://github.com/user-attachments/assets/3a135c84-54a4-48af-b28a-386455166487)
+
 
 ## Installation
 
