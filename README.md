@@ -1,86 +1,85 @@
-# Projeto de Engenharia de Dados de Ponta a Ponta
+# End-to-End Data Engineering Project
 
-Este projeto demonstra um pipeline de engenharia de dados de ponta a ponta, começando pela extração de dados de um SQL Server local até a visualização no Power BI. O pipeline inclui a transformação de dados em várias camadas usando o Azure Data Factory.
+This project demonstrates an end-to-end data engineering pipeline, starting from data extraction from a local SQL Server to visualization in Power BI. The pipeline includes data transformation across multiple layers using Azure Data Factory.
 
-## Visão Geral do Projeto
+## Project Overview
 
-### Arquitetura
+### Architecture
 ![image](https://github.com/user-attachments/assets/7a8f2559-2914-42ac-9425-da69e89e18ba)
 
-O pipeline consiste nas seguintes etapas:
+The pipeline consists of the following stages:
 
-1. **Fonte de Dados (SQL Server Local)**  
-   - Os dados são originados de um banco de dados SQL Server local.
+1. **Data Source (Local SQL Server)**  
+   - Data originates from a local SQL Server database.
 
-2. **Extração (Azure Data Factory)**  
-   - O Azure Data Factory (ADF) é usado para extrair os dados do SQL Server local para o Azure.
-   
-3. **Transformação e Carregamento (Databricks & Camadas do Data Lake)**  
-   Os dados são transformados e carregados em três camadas distintas usando o Databricks:
-   - **Camada Bronze:** Dados brutos são ingeridos nesta camada com transformação mínima.
-   - **Camada Prata:** Os dados são limpos e enriquecidos, tornando-os adequados para análise.
-   - **Camada Ouro:** Esta camada contém dados totalmente transformados e agregados, prontos para relatórios e análises avançadas.
+2. **Extraction (Azure Data Factory)**  
+   - Azure Data Factory (ADF) is used to extract data from the local SQL Server to Azure.
 
-4. **Visualização (Power BI)**  
-   - Os dados finais são visualizados usando o Power BI para insights de negócios e relatórios.
+3. **Transformation and Loading (Databricks & Data Lake Layers)**  
+   Data is transformed and loaded into three distinct layers using Databricks:
+   - **Bronze Layer:** Raw data is ingested with minimal transformation.
+   - **Silver Layer:** Data is cleaned and enriched for analytical purposes.
+   - **Gold Layer:** Fully transformed and aggregated data, ready for reporting and advanced analytics.
 
-## Stack de Tecnologia
+4. **Visualization (Power BI)**  
+   - Final data is visualized using Power BI for business insights and reporting.
 
-- **SQL Server (Local):** Fonte de dados.
-- **Azure Data Factory (ADF):** Extração de dados e orquestração do pipeline.
-- **Databricks:** Transformação de dados e carregamento no Azure Data Lake.
-- **Data Lake (Azure):** Armazenamento para dados brutos, limpos e processados.
-- **Power BI:** Visualização e relatórios.
+## Technology Stack
 
-## Pipeline de Dados
+- **SQL Server (Local):** Data source.
+- **Azure Data Factory (ADF):** Data extraction and pipeline orchestration.
+- **Databricks:** Data transformation and loading into Azure Data Lake.
+- **Azure Data Lake:** Storage for raw, cleaned, and processed data.
+- **Power BI:** Data visualization and reporting.
+
+## Data Pipeline
 ![image](https://github.com/user-attachments/assets/3a135c84-54a4-48af-b28a-386455166487)
 
-## Visualização no PowerBI
+## Power BI Visualization
 ![image](https://github.com/user-attachments/assets/5fe34b2a-b84f-44bf-bbc7-59caf84a3df8)
 
+## Installation
 
-## Instalação
+Follow these steps to set up the pipeline:
 
-Para configurar este pipeline, siga estas etapas:
-
-1. **Configuração do SQL Server:**
-   - Garanta que o SQL Server local esteja acessível.
-   - Configure as regras de firewall e permissões necessárias para que o Azure Data Factory se conecte.
+1. **SQL Server Setup:**
+   - Ensure the local SQL Server is accessible.
+   - Configure firewall rules and permissions to allow Azure Data Factory to connect.
 
 2. **Data Lake:**
-   - Configure a conta de armazenamento e crie três camadas: `Bronze`, `Prata` e `Ouro`.
+   - Set up the storage account and create three layers: `Bronze`, `Silver`, and `Gold`.
 
 3. **Azure Data Factory:**
-   - Crie uma nova instância do ADF no portal do Azure.
-   - Configure os Serviços Vinculados para o SQL Server local e o Azure Data Lake.
-   - Defina conjuntos de dados para a origem e o destino.
-   - Crie o pipeline para extrair dados e carregá-los na camada Bronze do Data Lake.
+   - Create a new ADF instance in the Azure portal.
+   - Configure Linked Services for the local SQL Server and Azure Data Lake.
+   - Define datasets for source and destination.
+   - Create a pipeline to extract data and load it into the Bronze layer of the Data Lake.
 
-4. **Configuração do Databricks:**
-   - Crie um workspace do Databricks.
-   - Configure um cluster para executar transformações.
-   - Desenvolva notebooks para o seguinte:
-     - Transformações de Bronze para Prata (limpeza e enriquecimento de dados).
-     - Transformações de Prata para Ouro (agregação e lógica de negócios final).
-   - Use jobs do Databricks para agendar e orquestrar as transformações.
+4. **Databricks Setup:**
+   - Create a Databricks workspace.
+   - Configure a cluster to run transformations.
+   - Develop notebooks for:
+     - Bronze → Silver transformations (data cleaning and enrichment).
+     - Silver → Gold transformations (aggregation and final business logic).
+   - Use Databricks jobs to schedule and orchestrate transformations.
 
 5. **Power BI:**
-   - Conecte o Power BI à camada Ouro do Data Lake.
-   - Projete os relatórios e dashboards necessários para visualização de dados.
+   - Connect Power BI to the Gold layer of the Data Lake.
+   - Design the necessary dashboards and reports for data visualization.
 
-## Uso
+## Usage
 
-1. Execute o pipeline do Azure Data Factory para extrair os dados para a camada `Bronze`.
-2. Use o Databricks para transformar e mover dados através das camadas `Bronze`, `Prata` e `Ouro`.
-3. Verifique os dados em cada camada.
-4. Use o Power BI para visualizar os dados da camada `Ouro`.
+1. Run the Azure Data Factory pipeline to extract data into the `Bronze` layer.
+2. Use Databricks to transform and move data through the `Bronze`, `Silver`, and `Gold` layers.
+3. Verify the data at each layer.
+4. Use Power BI to visualize data from the `Gold` layer.
 
-## Estrutura do Projeto
+## Project Structure
 
 ```plaintext
 ├── data_engineering_project/
-│   ├── Pipeline-ADF/         # Arquivos do pipeline do Azure Data Factory
-│   ├── Notebooks-Databricks/ # Notebooks do Databricks para transformação de dados
-│   ├── PowerBI/              # Arquivos de dashboard do Power BI
-│   └── README.md             # Documentação do projeto
+│   ├── Pipeline-ADF/         # Azure Data Factory pipeline files
+│   ├── Notebooks-Databricks/ # Databricks notebooks for data transformation
+│   ├── PowerBI/              # Power BI dashboard files
+│   └── README.md             # Project documentation
 ```
